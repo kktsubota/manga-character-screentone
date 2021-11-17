@@ -32,6 +32,9 @@ python render.py <path to a line-drawing image> label.png
 ## Contact
 Please contact me via e-mail if you have any troubles when running this code. My e-mail address is shown in our paper.
 
+## Links
+* Our paper: https://ieeexplore.ieee.org/document/8959008
+
 ## Acknowledgements
 * I thank to Chengze Li for providing a code that renders screentones.
 * Some parts of our code are borrowed from https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.
