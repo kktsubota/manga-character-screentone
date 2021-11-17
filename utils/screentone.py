@@ -6,6 +6,8 @@ import numpy as np
 from PIL import Image
 import torch
 
+from .colormap import voc_colormap
+
 
 class ToneLabel:
     def __init__(self, label: np.ndarray, ignore: set = {0}) -> None:
@@ -29,8 +31,6 @@ class ToneLabel:
         return torch.from_numpy(self.data.astype(np.int32))
 
     def visualize(self) -> Image.Image:
-        from chainercv.visualizations.colormap import voc_colormap
-
         colors = voc_colormap(range(200)).astype(np.uint8)
         return Image.fromarray(colors[self.data])
 
