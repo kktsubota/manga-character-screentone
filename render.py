@@ -18,26 +18,30 @@ def main():
         default="label-vis.png",
         help="visualization of the screentone label",
     )
-    args = parser.parse_args()
+    args: argparse.Namespace = parser.parse_args()
 
-    tone_gen = ToneImageGenerator()
+    tone_gen: ToneImageGenerator = ToneImageGenerator()
+
+    # read a tone label
+    label: ToneLabel = ToneLabel.load(args.label)
+    label.visualize().save(args.out_label)
+    # width, height
+    size: tuple = (label.shape[1], label.shape[0])
 
     # read a line drawing
     if args.line is None:
         line = None
     else:
         with Image.open(args.line) as f:
-            line = f.convert("L").resize((256, 256), Image.BICUBIC)
+            line = f.convert("L")
+            line = line.resize(size, Image.BICUBIC)
             line = np.asarray(line, dtype=np.uint8)
 
-    # read a tone label
-    label = ToneLabel.load(args.label)
-    label.visualize().save(args.out_label)
-
     # post-process
-    label.data = uniform_label(label.data, line, thresh=144)
+    if args.line is not None:
+        label.data = uniform_label(label.data, line, thresh=144)
     # render a manga image
-    img_rec = tone_gen.render(label, line)
+    img_rec: np.ndarray = tone_gen.render(label, line)
     # save the manga image
     cv2.imwrite(args.out, img_rec)
 
