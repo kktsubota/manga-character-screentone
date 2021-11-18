@@ -17,7 +17,7 @@ You can also use [official PyTorch implementation](https://github.com/ljsabc/Man
 (I used the theano implementation for our experiments in our paper. I checked that the PyTorch implementation also works well.)
 
 ### Inference
-
+#### Line drawings to manga images
 ```bash
 # download a pre-trained model
 wget https://github.com/kktsubota/manga-character-screentone/releases/download/pre/model.pth
@@ -27,6 +27,18 @@ python apply_gen.py <path to a line-drawing image> --model_path model.pth
 
 # render a manga image
 python render.py <path to a line-drawing image> label.png
+```
+
+#### Manga images to screentone Labels
+```bash
+# download a pre-trained model
+wget https://github.com/kktsubota/manga-character-screentone/releases/download/pre/unet.pth
+
+# apply a screentone generator
+python classify_tone.py <path to a manga image> --model_path unet.pth
+
+# render a manga image
+python render.py <path to a corresponding line-drawing image> label-c.png
 ```
 
 ## Contact
