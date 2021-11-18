@@ -199,8 +199,8 @@ def main():
     with Image.open(args.path) as img_pil:
         W, H = img_pil.size
 
-    H_pad = (H + 15) // 16 * 16 - H
-    W_pad = (W + 15) // 16 * 16 - W
+    H_pad: int = (H + 15) // 16 * 16 - H
+    W_pad: int = (W + 15) // 16 * 16 - W
     transform = transforms.Compose(
         [
             transforms.Grayscale(num_output_channels=1),
@@ -214,7 +214,7 @@ def main():
     # (1, n_class, H_pad, W_pad) -> (n_class, H_pad, W_pad) -> (H_pad, W_pad) -> (H, W)
     with torch.no_grad():
         label: torch.Tensor = model(img_t[None])[0].argmax(dim=0)[0:H, 0:W]
-    tone_label = ToneLabel(label.numpy().astype(np.uint8))
+    tone_label: ToneLabel = ToneLabel(label.numpy().astype(np.uint8))
     tone_label.save(args.out)
 
 

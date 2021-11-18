@@ -3,7 +3,7 @@
 import numpy as np
 
 
-def voc_colormap(labels):
+def voc_colormap(labels) -> np.ndarray:
     """Color map used in PASCAL VOC
     Args:
         labels (iterable of ints): Class ids.

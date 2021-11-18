@@ -3,7 +3,7 @@ import numpy as np
 import scipy.stats
 
 
-def uniform_label(label, img_line, thresh=144):
+def uniform_label(label: np.ndarray, img_line: np.ndarray, thresh: int = 144) -> np.ndarray:
     """uniform label in each closed region
     
     Arguments:
@@ -22,7 +22,7 @@ def uniform_label(label, img_line, thresh=144):
     for i in range(len(contours)):
         mask = np.zeros(img_line.shape, dtype=np.uint8)
 
-        cv2.drawContours(mask ,contours, i, (255,), -1)
+        cv2.drawContours(mask, contours, i, (255,), -1)
         j = hierarchy[0, i, 2]
         while(j != -1):
             cv2.drawContours(mask, contours, j,(0,), -1)
