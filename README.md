@@ -25,19 +25,19 @@ wget https://github.com/kktsubota/manga-character-screentone/releases/download/p
 # apply a screentone generator
 python apply_gen.py <path to a line-drawing image> --model_path model.pth
 
-# render a manga image
+# render a manga image from the generated label
 python render.py <path to a line-drawing image> label.png
 ```
 
-#### Manga images to screentone Labels
+#### Manga images to screentone labels
 ```bash
 # download a pre-trained model
 wget https://github.com/kktsubota/manga-character-screentone/releases/download/pre/unet.pth
 
-# apply a screentone generator
+# apply a screentone classifier
 python classify_tone.py <path to a manga image> --model_path unet.pth
 
-# render a manga image
+# render a manga image from the extracted label
 python render.py <path to a corresponding line-drawing image> label-c.png
 ```
 
