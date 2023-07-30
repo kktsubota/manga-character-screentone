@@ -28,7 +28,7 @@ def uniform_label(label: np.ndarray, img_line: np.ndarray, thresh: int = 144) ->
             cv2.drawContours(mask, contours, j,(0,), -1)
             j = hierarchy[0, j, 0] # next
 
-        mask = mask.astype(np.bool)
+        mask = mask.astype(bool)
         result = scipy.stats.mode(label[mask])
         label[mask] = result.mode
     

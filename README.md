@@ -3,9 +3,9 @@ Official PyTorch implementation of "Synthesis of Screentone Patterns of Manga Ch
 I only provide a demo script now.
 
 ## Environment
-
+Python 3.9 is recommended in 2023/07/30.
 ```bash
-pip install requirements.txt -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
+pip install -r requirements.txt -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
 ```
 
 ## Usage
